@@ -1,8 +1,7 @@
-package com.sk.prototype.simple;
+package com.sk.prototype;
 
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
-import java.util.List;
 
 public class ConcreatePrototypeTest {
         public static void main(String[] args) {

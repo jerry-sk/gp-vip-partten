@@ -1,4 +1,4 @@
-package com.sk.prototype.simple;
+package com.sk.prototype;
 
 import java.io.*;
 import java.util.List;
