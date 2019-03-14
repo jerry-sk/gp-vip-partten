@@ -1,38 +1,28 @@
 package com.sk.singleton;
 
-import java.io.*;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 
 /**可以通过序列化和方序列化来破坏单列**/
-public class SeriableSingletonTest{
+public class InvokeBrokenSingletonTest {
     /**破坏单列**/
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
         //正常的获取单列
         SeriableSingleton seriableSingleton = SeriableSingleton.getInstance();
 
-        ObjectOutputStream objectOutputStream = null;
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        try {
-            objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
-            objectOutputStream.writeObject(seriableSingleton);
-            objectOutputStream.flush();
-            objectOutputStream.close();
+        // Constructor[]  constructors = SeriableSingleton.class.getConstructors();
+        Constructor constructor = SeriableSingleton.class.getDeclaredConstructor(null);
+        constructor.setAccessible(true);//可以调用私有的构造器
+        SeriableSingleton seriableSingleton_2 = (SeriableSingleton) constructor.newInstance();
 
-            ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(byteArrayOutputStream.toByteArray());
-            ObjectInputStream objectInputStream = new ObjectInputStream(byteArrayInputStream);
-            /**
-             * readObject 方法能创建一个新对象，同时也提供了一个会掉函数让用户自定义放回对象
-             */
-            SeriableSingleton seriableSingleton_2= (SeriableSingleton)objectInputStream.readObject();
+        System.out.println(seriableSingleton == seriableSingleton_2);
+        System.out.println(seriableSingleton);
+        System.out.println(seriableSingleton_2);
 
-            System.out.println(seriableSingleton == seriableSingleton_2);
-            System.out.println(seriableSingleton);
-            System.out.println(seriableSingleton_2);
-
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
 }

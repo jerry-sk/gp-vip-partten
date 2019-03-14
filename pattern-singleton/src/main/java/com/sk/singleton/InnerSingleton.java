@@ -3,7 +3,7 @@ package com.sk.singleton;
 /**
  * 懒汉式单列
  */
-public class LazySingleton {
+public class InnerSingleton {
     /**
      * step1:私有化构造函数
      * step2:保证唯一性
@@ -11,34 +11,20 @@ public class LazySingleton {
      * step4:防止序列化破坏单列
      * step5:防止放射破坏单列
      * */
-    private LazySingleton() {
-        if(lazySingleton!=null){
-            System.out.println(lazySingleton);
+    private InnerSingleton() {
+        if(InnerClassHolder.INNER_SINGLETON!=null){
+            System.out.println(InnerClassHolder.INNER_SINGLETON);
             throw new RuntimeException("单列不允许被破坏.");
         }
     }
-    private static LazySingleton lazySingleton = null;
 
-    public synchronized LazySingleton getInstance(){
-        if(lazySingleton == null){
-            lazySingleton = new LazySingleton();
-        }
-        return  lazySingleton;
+    /***static 保证方法不被重载重新**/
+    public static final InnerSingleton getInstance(){
+        return InnerClassHolder.INNER_SINGLETON;
+    }
+    /**内部类只有在使用的时候在能被加载**/
+    private static class InnerClassHolder{
+        public final static InnerSingleton INNER_SINGLETON = new InnerSingleton();
     }
 
-    public LazySingleton getInstance_doubleCheck(){
-        /**
-         * 仅仅这样第一个没区别
-         * 如果尽量减少锁的获得减少线程等待，外层再加个判断
-         *
-         * */
-        if(lazySingleton == null){
-            synchronized (LazySingleton.class){
-                if (lazySingleton == null){
-                    lazySingleton = new LazySingleton();
-                }
-            }
-        }
-        return lazySingleton;
-    }
 }

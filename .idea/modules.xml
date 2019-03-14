@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/pattern-factory/pattern-factory.iml" filepath="$PROJECT_DIR$/pattern-factory/pattern-factory.iml" />
       <module fileurl="file://$PROJECT_DIR$/pattern-proxy/pattern-proxy.iml" filepath="$PROJECT_DIR$/pattern-proxy/pattern-proxy.iml" />
       <module fileurl="file://$PROJECT_DIR$/pattern-singleton/pattern-singleton.iml" filepath="$PROJECT_DIR$/pattern-singleton/pattern-singleton.iml" />
       <module fileurl="file://$PROJECT_DIR$/pattren-strategy/pattren-strategy.iml" filepath="$PROJECT_DIR$/pattren-strategy/pattren-strategy.iml" />

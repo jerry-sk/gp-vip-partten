@@ -17,8 +17,8 @@ public class HungrySingleton {
             throw new RuntimeException("单列不允许被破坏.");
         }
     }
-    private static HungrySingleton hungrySingleton = new HungrySingleton();
-    public HungrySingleton getInstance(){
+    private final static HungrySingleton hungrySingleton = new HungrySingleton();
+    public static  HungrySingleton getInstance(){
         return hungrySingleton;
     }
 }

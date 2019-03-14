@@ -6,12 +6,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="pattern-factory" />
         <module name="pattern-proxy" />
         <module name="pattern-singleton" />
         <module name="pattren-strategy" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="pattern-factory" target="1.5" />
       <module name="pattern-proxy" target="1.5" />
       <module name="pattern-singleton" target="1.5" />
       <module name="pattren-strategy" target="1.5" />

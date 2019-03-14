@@ -25,7 +25,7 @@ public class ConcreatePrototype implements  Cloneable,Serializable{
         return obj;
     }
 
-
+    /**序列化和反序列化创建对象**/
     public Object deepClone() throws IOException, ClassNotFoundException {
         ByteArrayOutputStream bout = new ByteArrayOutputStream();
         ObjectOutputStream os = new ObjectOutputStream(bout);
