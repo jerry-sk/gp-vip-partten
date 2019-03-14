@@ -1,4 +1,4 @@
 package factory;
 
-public class NikeShoes {
+public class NikeShoes extends Shoes{
 }

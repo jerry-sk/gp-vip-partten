@@ -1,4 +1,6 @@
 package factory;
 
-public class FactoryMethod {
+public interface FactoryMethod {
+    public Shoes createShoes();
 }
+

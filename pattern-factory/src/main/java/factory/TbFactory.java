@@ -1,8 +1,8 @@
 package factory;
 
-public class NikeFactory implements FactoryMethod {
+public class TbFactory implements FactoryMethod {
     public Shoes createShoes() {
-        System.out.println("生产一双NIKE");
-        return new NikeShoes();
+        System.out.println("生产一双特步");
+        return new TbShoes();
     }
 }
